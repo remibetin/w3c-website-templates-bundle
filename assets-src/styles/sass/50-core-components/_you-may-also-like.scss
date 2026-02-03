@@ -8,6 +8,10 @@
 	padding-block: rem(50);
 }
 
+.crosslinks .component--columns {
+	margin-block: 0;
+}
+
 .crosslinks .component--columns__intro {
 	> *:first-child {
 		margin-block-start: 0;
