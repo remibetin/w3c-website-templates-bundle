@@ -30,7 +30,7 @@
 }
 
 .component--fifty-fifty__text .l-box {
-	// @include stack(1rem);
+	@include stack(1rem);
 	margin-block-start: rem(30);
 
 	a {
