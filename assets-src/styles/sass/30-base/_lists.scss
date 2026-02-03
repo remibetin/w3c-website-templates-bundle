@@ -24,12 +24,25 @@ ol.counter {
 
 
 /**
-Remove bullets, margin and padding from lists inside a <nav> element.
-Note that that this may remove list semantics in some circumstances in some
-WebKit browsers. See https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
-If it's important that the number of items in a list is announced, add role="list" to the <ul> / <ol>
+Remove bullets/numbering from lists with the `.nomarkers-list` class.
+This may remove list semantics in some circumstances in older WebKit browsers.
+See https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+If it's important that the number of items in a list is announced, add role="list" to the <ul>/<ol>
  */
-nav :is(ul, ol) {
+.nomarkers-list {
+    list-style: none;
+}
+
+
+/**
+Remove list bullets/numbering and completely zero all margins/padding with the `.clean-list`
+class, and on lists that are children of the <nav> element.
+This may remove list semantics in some circumstances in older WebKit browsers.
+See https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+If it's important that the number of items in a list is announced, add role="list" to the <ul>/<ol>
+ */
+.clean-list,
+nav :is(ul, ol){
     list-style: none;
     margin: 0;
     padding: 0;
@@ -40,16 +53,6 @@ nav :is(ul, ol) {
         margin: 0;
         padding: 0;
     }
-}
-
-/**
-Remove bullets from lists with the `.clean-list, class.
-Note that that this may remove list semantics in some circumstances in some
-WebKit browsers. See https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
-If it's important that the number of items in a list is announced, add role="list" to the <ul> / <ol>
- */
-.clean-list {
-    list-style: none;
 }
 
 

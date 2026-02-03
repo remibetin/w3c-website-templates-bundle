@@ -7,21 +7,19 @@
 }
 
 .component--columns > ul {
-	padding: 0;
-
 	@include mq($bp-tab-small) {
 		display: flex;
 		flex-wrap: wrap;
 		margin: -1.5%;
 	}
 
-	// li + li {
-	// 	margin-block-start: rem(20);
-    //
-	// 	@include mq($bp-tab-small) {
-    //         margin-block-start: 0;
-	// 	}
-	// }
+	li + li {
+		margin-block-start: rem(20);
+
+	 	@include mq($bp-tab-small) {
+             margin-block-start: 0;
+	 	}
+	}
 }
 
 .component--columns--images {
