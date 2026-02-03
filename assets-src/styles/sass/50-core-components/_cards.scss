@@ -43,7 +43,11 @@
 .card__text {
 	flex-grow: 1;
 	order: 1;
-	// padding-block-start: 1rem;
+	padding-block-start: 1rem;
+
+	> *:first-child {
+		margin-block-start: 0;
+	}
 }
 
 .card--group .card__text {
