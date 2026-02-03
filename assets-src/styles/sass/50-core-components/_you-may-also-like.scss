@@ -8,12 +8,16 @@
 	padding-block: rem(50);
 }
 
-.crosslinks .component--columns__intro h2 {
-	//@include txt-mars;
-	font-size: var(--w3c-text-3);
-}
-
 .crosslinks .component--columns__intro {
+	> *:first-child {
+		margin-block-start: 0;
+	}
+
+	h2 {
+		//@include txt-mars;
+		font-size: var(--w3c-text-3);
+	}
+
 	a,
 	a:visited,
 	a:hover,
