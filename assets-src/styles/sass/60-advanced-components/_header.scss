@@ -11,7 +11,7 @@
 	&::before {
 		background-color: $w3c-blue;
         block-size: rem(3);
-		bottom: rem(-2);
+		inset-block-end: rem(-2);
 		content:'';
 		display: none;
         inline-size: 100%;

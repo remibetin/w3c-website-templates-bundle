@@ -6,7 +6,7 @@
 	background-color: $mist-gray;
 
 	@include mq($max-width) {
-		padding-top: rem(46);
+		padding-block-start: rem(46);
 	}
 
 	.l-sidebar > *,

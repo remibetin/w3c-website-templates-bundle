@@ -51,7 +51,7 @@ li.top-nav-item + li.top-nav-item {
 }
 
 .global-nav__inner .top-nav-item {
-	border-bottom: solid 1px $border-color;
+	border-block-end: solid 1px $border-color;
 	flex-basis: 100%;
 
 	@include mq($max-width) {
