@@ -3,15 +3,9 @@
 \*------------------------------------*/
 
 .logo {
-	display: block;
-	block-size: rem(44);
-    inline-size: rem(66);
-	position: relative;
-
-	@include mq($bp-tab-large) {
-        block-size: rem(52);
-        inline-size: rem(78);
-	}
+    display: block;
+    position: relative;
+	width: clamp(3.75rem, 2.51rem + 6.198vw, 7.5rem);
 }
 
 .logo--member {
@@ -22,7 +16,7 @@
 
 	> img {
 		inset-block-end: 0;
-        iinset-block-start: 0;
+        inset-block-start: 0;
 		block-size: auto;
         inline-size: auto;
         inset-inline-end: 0;
