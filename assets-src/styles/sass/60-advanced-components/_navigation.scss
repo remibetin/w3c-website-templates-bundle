@@ -175,7 +175,7 @@
 	@include mq($max-width) {
 		border-block-end: solid 1px $border-color;
 		border-block-start: solid 1px $border-color;
-        inset-block-start: 100%;
+		inset-block-start: calc(100% + rem(26));
 		inset-inline-start: 50%;
 		min-block-size: auto;
 		padding: rem(50) rem(20);
