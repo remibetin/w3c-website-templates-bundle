@@ -4,54 +4,58 @@
 
 
 /**
-Start of resets for the fieldset element
-https://thatemil.com/blog/2015/01/03/reset-your-fieldset/
+The default styling of <fieldset> and <legend> is a little odd, so we reset those styles here.
+To surround with a visible border and padding, make the <fieldset> a direct child of the `.l-box` layout.
  */
 fieldset {
-	// If you want a border etc., apply this to a wrapping container for the fieldset
 	border: 0;
 	margin: 0;
 	min-inline-size: 0;
-	padding: 0.01em 0 0 0;
+	padding: 0;
 }
 
-body:not(:-moz-handler-blocked) fieldset {
-	display: table-cell; // Deal with fieldset width in Firefox
-}
-/**
-End of resets for the fieldset element
- */
-
-
-// .field-group + .field-group {
-// 	margin-block-start: 2.5rem;
-// }
-
-// form > * + *,
-// .field-group > * + * {
-// 	margin-block-start: 1.75rem;
-// }
-
-/**
-Group inputs to line up side-by-side
- */
-.input-group {
-	display: flex;
-	align-items: center;
-}
-
-.input-group > * + * {
-	margin-inline-start: rem(30);
-}
-
-.field-legend {
+/* Remove legend padding */
+legend {
 	//@include txt-saturn;
+	display: block;
 	font-size: var(--w3c-text-1);
 	font-weight: bold;
+	padding: 0;
+}
+
+/**
+Manage vertical spacing inside forms. Space is added above every element that is a direct
+child of `.w3c-form` apart from the first instance. Space is also added evenly above every `.field`
+element that comes immediately after another `.field`. It doesn't matter if `.field` is a direct
+child of the parent form or part of a nested container.
+ */
+form > * + *,
+.field + .field {
+	margin-block-start: 1.75rem;
+}
+
+/**
+Where the `.l-box` layout is a direct child of a form and used to visually group a subset of
+fields, we also slightly increase its vertical spacing.
+ */
+form > .l-box:not(:first-child) {
+	margin-block: 2.5rem;
+}
+
+/* If `.l-box` layout is the last direct child of a form, remove the additional space after it. */
+form > .l-box:last-child {
+	margin-block-end: 0;
 }
 
 .field {
 	max-inline-size: rem($text-measure);
+}
+
+/* A wrapper to allow fields to sit side-by-side horizontally, if desired */
+.input-group {
+	align-items: center;
+	display: flex;
+	gap: rem(30);
 }
 
 label,
@@ -62,26 +66,33 @@ label,
 	display: block;
 }
 
-// .field-label,
-// .faux-label {
-// 	margin-block-end: 0.25rem;
-// }
+label,
+.field-label,
+.faux-label {
+	margin-block-end: 0.25rem;
+}
 
+.faux-label {
+	font-weight: normal;
+}
+
+label,
 .field-label,
 .group-legend {
 	font-weight: bold;
-
-	// + .field-hint {
-	// 	margin-block-start: 0.25rem;
-	// }
 }
 
 .field-hint {
 	//@include txt-pluto;
 	font-size: var(--w3c-text-01);
 	color: $storm-gray;
-	// margin-block-end: 0.25rem;
+	margin-block: 0.25rem;
 	max-inline-size: rem($text-measure);
+}
+
+.field-label + .field-hint,
+.group-legend + .field-hint {
+	margin-block-start: 0.25rem;
 }
 
 .required {
@@ -89,22 +100,11 @@ label,
 	font-weight: normal;
 }
 
-textarea,
-[type=date],
-[type=email],
-[type=file],
-[type=number],
-[type=password],
-[type=search],
-[type=tel],
-[type=text],
-[type=time],
-[type=url] {
+:where(input:not([type="checkbox"], [type="radio"], select), textarea) {
 	appearance: none;
-	-webkit-appearance: none;
 	border: 2px solid;
 	border-radius: 0;
-    inline-size: 100%;
+	inline-size: 100%;
 	//line-height: 1.25;
 	padding: rem(5);
 
@@ -115,17 +115,8 @@ textarea,
 	}
 }
 
-select,
-[type=date],
-[type=email],
-[type=number],
-[type=password],
-[type=search],
-[type=tel],
-[type=text],
-[type=time],
-[type=url] {
-	height: rem(47); // Matches button height
+:where(input:not([type="checkbox"], [type="radio"], textarea), select) {
+	min-block-size: rem(47); // Matches button height;
 }
 
 [type="file"] {
@@ -140,24 +131,16 @@ select,
 	}
 }
 
-
-/**
-Search
- */
 [type="search"]::-webkit-search-decoration,
 [type="search"]::-webkit-search-cancel-button {
 	appearance: none;
 }
 
-
-/**
-Select
- */
 select {
 	background-color: transparent;
 	border: 2px solid;
 	border-radius: 0;
-    inline-size: 100%;
+	inline-size: 100%;
 	//line-height: 1.25;
 	padding: rem(5);
 
@@ -168,9 +151,7 @@ select {
 	}
 }
 
-/**
-Select with custom arrow icon
- */
+/* Select with custom arrow icon */
 @supports (padding-inline-start: 1em) {
 	select {
 		appearance: none;
@@ -186,19 +167,15 @@ Select with custom arrow icon
 	}
 }
 
-
-/**
-Textarea
- */
 textarea {
-	height: 10em;
 	resize: vertical;
 }
 
+textarea:not([rows]) {
+	min-block-size: 10em;
+}
 
-/**
-Memorable dates (e.g. date of birth)
- */
+/* Memorable dates (e.g. date of birth) */
 .memorable-date {
 	display: inline-block;
 	margin-block-start: 0;
@@ -207,7 +184,6 @@ Memorable dates (e.g. date of birth)
 .memorable-date + .memorable-date {
 	margin-inline-start: 1rem;
 }
-
 
 /**
 Radio/checkbox inputs
@@ -237,10 +213,10 @@ Radio/checkbox inputs
 
 .radio-item input,
 .checkbox-item input {
-    block-size: rem(44);
+	block-size: rem(44);
 	cursor: pointer;
-    inline-size: rem(44);
-    inset-block-start: rem(-2);
+	inline-size: rem(44);
+	inset-block-start: rem(-2);
 	inset-inline-start: rem(-10);
 	margin: 0;
 	opacity: 0;
@@ -264,10 +240,10 @@ Radio/checkbox inputs
 
 	&::before {
 		background: transparent;
-        block-size: rem(24);
+		block-size: rem(24);
 		border: 2px solid;
-        inline-size: rem(24);
-        inset-block-start: rem(8);
+		inline-size: rem(24);
+		inset-block-start: rem(8);
 		inset-inline-start: 0;
 	}
 }
@@ -287,10 +263,10 @@ Radio/checkbox inputs
 
 	&::after {
 		background: currentColor;
-        block-size: 0;
+		block-size: 0;
 		border: 5px solid;
-        inline-size: 0;
-        inset-block-start: rem(15);
+		inline-size: 0;
+		inset-block-start: rem(15);
 		inset-inline-start: rem(7);
 		opacity: 0;
 	}
@@ -299,12 +275,12 @@ Radio/checkbox inputs
 .checkbox-item label {
 	&::after {
 		background: transparent;
-        block-size: rem(6.5);
+		block-size: rem(6.5);
 		border: solid;
 		border-block-start-color: transparent;
 		border-width: 0 0 3px 3px;
-        inline-size: rem(12);
-        inset-block-start: rem(15);
+		inline-size: rem(12);
+		inset-block-start: rem(15);
 		inset-inline-start: rem(6);
 		opacity: 0;
 		transform: rotate(-45deg);
@@ -362,7 +338,6 @@ Radio/checkbox inputs
 	opacity: .5;
 }
 
-
 /**
 Segmented options. Can use either radio or checkbox inputs. The purpose is to
 show all available options outright, rather than hide them behind a <select>
@@ -395,19 +370,19 @@ show all available options outright, rather than hide them behind a <select>
 		&::before {
 			background: transparent;
 			block-size: rem(24);
-            inline-size: rem(24);
-            inset-block-start: rem(10);
+			inline-size: rem(24);
+			inset-block-start: rem(10);
 			inset-inline-start: rem(10);
 		}
 
 		&::after {
 			background: transparent;
-            block-size: rem(6.5);
+			block-size: rem(6.5);
 			border: solid;
 			border-block-start-color: transparent;
 			border-width: 0 0 3px 3px;
-            inline-size: rem(12);
-            inset-block-start: rem(17);
+			inline-size: rem(12);
+			inset-block-start: rem(17);
 			inset-inline-start: rem(16);
 			opacity: 0;
 			transform: rotate(-45deg);
@@ -417,9 +392,9 @@ show all available options outright, rather than hide them behind a <select>
 	input {
 		cursor: pointer;
 		block-size: rem(44);
-        inline-size: rem(44);
-        inset-block-start: 0;
-        inset-inline-end: 0;
+		inline-size: rem(44);
+		inset-block-start: 0;
+		inset-inline-end: 0;
 		margin: 0;
 		opacity: 0;
 		position: absolute;
@@ -427,7 +402,7 @@ show all available options outright, rather than hide them behind a <select>
 	}
 
 	.segmented-label {
-		//@include stack(.5em);
+		@include stack(.5em);
 		display: block;
 		padding: rem(10);
 		padding-inline-start: rem(44);
@@ -436,8 +411,8 @@ show all available options outright, rather than hide them behind a <select>
 			display: block;
 		}
 
-		span:first-of-type {
-			font-weight: bold;
+		span:last-of-type {
+			font-weight: normal;
 		}
 	}
 
@@ -461,7 +436,6 @@ show all available options outright, rather than hide them behind a <select>
 	}
 }
 
-
 /**
 Fixed input widths
  */
@@ -470,27 +444,27 @@ Fixed input widths
 }
 
 .input-width-20 {
-    max-inline-size: 41ex;
+	max-inline-size: 41ex;
 }
 
 .input-width-10 {
-    max-inline-size: 23ex;
+	max-inline-size: 23ex;
 }
 
 .input-width-5 {
-    max-inline-size: 10.8ex;
+	max-inline-size: 10.8ex;
 }
 
 .input-width-4 {
-    max-inline-size: 9ex;
+	max-inline-size: 9ex;
 }
 
 .input-width-3 {
-    max-inline-size: 7.2ex;
+	max-inline-size: 7.2ex;
 }
 
 .input-width-2 {
-    max-inline-size: 5.4ex;
+	max-inline-size: 5.4ex;
 }
 
 /**
@@ -550,19 +524,19 @@ Progress bar
 
 	&::after {
 		background-color: $storm-gray;
-        block-size: rem(13);
+		block-size: rem(13);
 		content:'';
-        inline-size: rem(3);
-        inset-block-end: rem(-16);
+		inline-size: rem(3);
+		inset-block-end: rem(-16);
 		inset-inline-start: rem(19);
 		position: absolute;
 
 		@include mq($bp-tab-small) {
-            block-size: rem(3);
-            inline-size: 100%;
-            inset-block-end: auto;
-            inset-block-start: rem(32);
-            inset-inline-start: 50%;
+			block-size: rem(3);
+			inline-size: 100%;
+			inset-block-end: auto;
+			inset-block-start: rem(32);
+			inset-inline-start: 50%;
 			z-index: -1;
 		}
 	}
@@ -571,7 +545,7 @@ Progress bar
 		margin-block-start: rem(20);
 
 		@include mq($bp-tab-small) {
-            margin-block-start: 0;
+			margin-block-start: 0;
 		}
 	}
 }
@@ -612,11 +586,11 @@ Progress bar
 .progress-step__marker {
 	align-items: center;
 	background-color: $white;
-    block-size: rem(44);
+	block-size: rem(44);
 	border: solid 3px $storm-gray;
 	border-radius: 50%;
 	display: flex;
-    inline-size: rem(44);
+	inline-size: rem(44);
 	justify-content: center;
 
 	@include mq($bp-tab-small) {
@@ -638,20 +612,20 @@ Progress bar
 	}
 
 	&::before {
-        block-size: rem(38);
+		block-size: rem(38);
 		border-radius: 50%;
-        inline-size: rem(38);
-        inset-block-start: 0;
+		inline-size: rem(38);
+		inset-block-start: 0;
 		inset-inline-start: 0;
 	}
 
 	&::after {
-        block-size: rem(9);
+		block-size: rem(9);
 		border: solid;
 		border-block-start-color: transparent;
 		border-width: 0 0 3px 3px;
-        inline-size: rem(18);
-        inset-block-start: rem(13);
+		inline-size: rem(18);
+		inset-block-start: rem(13);
 		inset-inline-start: rem(10);
 		transform: rotate(-45deg);
 	}

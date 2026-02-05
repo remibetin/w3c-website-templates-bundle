@@ -55,9 +55,9 @@ summary {
 // 	margin-top: 1rem;
 // }
 
-// details[open] > summary {
-// 	margin-bottom: 1rem;
-// }
+details[open] > summary {
+	margin-bottom: 1rem;
+}
 
 [dir="rtl"] summary::before {
     border-width: 7px 12.124px 7px 0;
