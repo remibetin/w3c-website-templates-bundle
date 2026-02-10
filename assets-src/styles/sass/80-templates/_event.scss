@@ -9,7 +9,6 @@
 .event .intro {
 	display: flex;
 	flex-direction: column;
-	margin-block-end: rem(20);
 	margin-inline-start: rem(30);
 	position: relative;
 
@@ -51,7 +50,10 @@
 	}
 }
 
-// .event .lead,
-// .event .calendar-link {
-// 	margin-block-end: rem(20);
-// }
+.event .meta dl {
+	margin-block-end: 0;
+}
+
+.event .calendar-link {
+	margin-block-end: rem(20);
+}
