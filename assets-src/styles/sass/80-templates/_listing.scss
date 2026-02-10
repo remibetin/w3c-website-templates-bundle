@@ -15,6 +15,10 @@
 	#main {
 		padding-block-start: 0;
 	}
+
+	.lead {
+		max-width: none;
+	}
 }
 
 .people-list,
@@ -98,11 +102,11 @@
 .member-list,
 .group-list,
 .tr-stats-list {
-	// margin-block-start: rem(40);
+	margin-block-start: rem(40);
 
-	// > * + * {
-    //     margin-block-start: 1rem;
-	// }
+	> * + * {
+		margin-block-start: 1rem;
+	}
 
 	.card {
 		padding: 1rem;
@@ -116,9 +120,13 @@
 		min-inline-size: calc(70% - 1.5rem);
 	}
 
-	// .card__text {
-	// 	padding-block-start: 0;
-	// }
+	.card__text {
+		padding-block-start: 0;
+	}
+
+	.card__heading {
+		margin-block-start: 0;
+	}
 }
 
 .event-list {
@@ -132,11 +140,11 @@
 		font-size: var(--w3c-text-01);
 	}
 
-	.card.l-sidebar .l-sidebar .sidebar {
+	.card .l-sidebar .sidebar {
 		flex-basis: rem(320);
 	}
 
-	.card.l-sidebar .l-sidebar .not-sidebar {
+	.card .l-sidebar .not-sidebar {
 		min-inline-size: calc(55% - 1.5rem);
 	}
 
@@ -168,9 +176,16 @@
 		margin-inline-end: rem(12);
 	}
 
-	.date-location .date-orig {
-		display: inline-block;
-		padding-block-end: rem(10);
+	.date-location p {
+		margin-block: 0;
+
+		+ p {
+			margin-block-start: rem(10);
+		}
+	}
+
+	.date-location > div:first-child {
+		flex: 0 0 auto;
 	}
 
 	.date-location > div:last-child {

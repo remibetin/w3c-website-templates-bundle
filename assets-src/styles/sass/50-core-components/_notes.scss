@@ -4,7 +4,7 @@
 
 .note {
 	border-width: 5px;
-	// margin-block-end: rem(30);
+	margin-block-end: rem(30);
 	max-inline-size: rem(752); // Matches max width of main content region on two-column templates
 
 	> *:first-child {
