@@ -10,19 +10,22 @@
 		padding: rem(25);
 	}
 
-	// > div + div {
-	// 	margin-top: 1rem;
-	// }
+	 > div + div {
+	 	margin-top: 1rem;
+	 }
 
 }
 
-// [data-heading="collapsibles"] span {
-// 	@include stack(1rem);
-// }
+//[data-heading="collapsibles"] span {
+//	@include stack(1rem);
+//}
 
-[data-heading="collapsibles"] h3 {
+h3[data-heading="collapsibles"] {
 	//@include txt-saturn;
 	font-size: var(--w3c-text-1);
+	line-height: 1.5;
+	margin-block-start: 0;
+	max-inline-size: none;
 }
 
 [data-heading="collapsibles"] > * {

@@ -13,9 +13,18 @@
     }
 }
 
+/* Sometimes components are nested, so we remove the block margin on those instances */
+.component .component {
+    margin-block: 0;
+}
+
 /* Full width components tend to have a background colour, where we don't want white space in between */
 .component.u-full-width + .component.u-full-width {
-    margin-block: 0;
+    margin-block-start: rem(-80);
+
+    @include mq($bp-tab-small) {
+        margin-block-start: rem(-100);
+    }
 }
 
 

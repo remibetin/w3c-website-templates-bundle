@@ -24,8 +24,8 @@
 		flex-basis: 45%;
 	}
 
-	h2 ~ * {
-		max-inline-size: rem($text-measure);
+	h2 {
+		margin-block-start: 0;
 	}
 }
 
@@ -41,6 +41,8 @@
 	}
 
 	h3 {
+		font-size: var(--w3c-text-1);
+		margin-block-start: 0;
 		padding-inline: rem(24);
 	}
 
@@ -54,6 +56,10 @@
 
 	p {
 		margin-block: 0;
+
+		+ p {
+			margin-block-start: 0.75em;
+		}
 	}
 
 	.sidebar {

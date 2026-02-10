@@ -9,4 +9,8 @@
 
 .component--group-list__intro {
 	max-inline-size: rem($text-measure);
+
+	> *:first-child {
+		margin-block-start: 0;
+	}
 }

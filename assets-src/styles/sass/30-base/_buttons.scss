@@ -38,6 +38,10 @@ button,
 	}
 }
 
+button:not([type=submit]) {
+	text-align: start;
+}
+
 
 /**
 Remove link styling from links styled as buttons.

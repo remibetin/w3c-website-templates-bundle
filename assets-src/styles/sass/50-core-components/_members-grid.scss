@@ -17,7 +17,7 @@
 .component--members__grid {
 	display: flex;
 	flex-wrap: wrap;
-	// margin-block-end: 1rem;
+	margin-block-end: 1rem;
 
 	@supports (display: grid) {
 		display: grid;
