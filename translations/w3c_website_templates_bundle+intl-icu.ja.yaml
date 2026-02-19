@@ -227,8 +227,8 @@ error:
         message: >-
             <p>リクエストされたページにアクセスするにはW3Cアカウントが必要です。</p>
             <ul>
-            <li>もしお持ちでなければ、<a href="/account/request/" hreflang="en">新しいアカウントをリクエストしてください</a>。</li>
-            <li>アカウントをお持ちでパスワードを忘れた場合は、<a href="/account/recover/" hreflang="en">パスワードを回復してください</a>。</li>
+            <li>もしお持ちでなければ、<a href="https://www.w3.org/account/request/" hreflang="en">新しいアカウントをリクエストしてください</a>。</li>
+            <li>アカウントをお持ちでパスワードを忘れた場合は、<a href="https://www.w3.org/account/recover/" hreflang="en">パスワードを回復してください</a>。</li>
             <li>W3Cアカウントに関するトラブルがある場合は、<a href="mailto:sysreq@w3.org">sysreq@w3.org</a>までメールを送ってください。</li>
             </ul>
         contact: >-

@@ -226,8 +226,8 @@ error:
         message: >-
             <p>您需要提供一个 W3C 账号才能继续访问请求页面。</p>
             <ul>
-            <li>如果您没有账号，请<a href="/account/request/" hreflang="en">申请一个新账号</a>。</li>
-            <li>如果您已有账号但是忘记了密码，请<a href="/account/recover/" hreflang="en">恢复密码</a>。</li>
+            <li>如果您没有账号，请<a href="https://www.w3.org/account/request/" hreflang="en">申请一个新账号</a>。</li>
+            <li>如果您已有账号但是忘记了密码，请<a href="https://www.w3.org/account/recover/" hreflang="en">恢复密码</a>。</li>
             <li>如果您的 W3C 账号出现了问题，请发送邮件至
             <a href="mailto:sysreq@w3.org">sysreq@w3.org</a>。
             </li>
